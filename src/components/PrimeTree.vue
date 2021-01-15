@@ -18,20 +18,47 @@
 <script lang="ts">
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import ndjsonStream from 'can-ndjson-stream';
 
 @Component
 export default class PrimeTree extends Vue {
   @Prop() private msg!: string;
 
   // Tree nodes data.
-  nodes: any = [
-    {'key': 1, 'name': 'node_1', 'children': [
-      {'key': 11, 'name': 'node_1.1', 'children': [
-        {'key': 111, 'name': 'node_1.1.1', 'children': []}
-      ]},
-      {'key': 12, 'name': 'node_1.2', 'children': []}
-    ]}
-  ];
+  nodes: any = [];
+
+  // Add an unique 'key' field for each node in the tree.
+  setKey(values: any[]): any[] {
+    values.map(i => {
+      i.key = i.id;
+      if (i.children !== undefined) {
+        if (i.children.length) this.setKey(i.children);
+      }
+    });
+    return values;
+  }
+
+  // Get tree data through provided server.
+  async getNodes(): Promise<any> {
+    try {
+      const response = await fetch( "http://localhost:3000/treedata" );
+      const stream = await ndjsonStream( response.body );
+      const reader = stream.getReader();
+      let read;
+      const result = await reader.read();
+      if (result.done) {
+        return;
+      }
+      reader.read().then( read );
+      return this.setKey( [ result.value ] );
+    } catch( err ) {
+      return;
+    }
+  }
+
+  async mounted() {
+    this.nodes = await this.getNodes();
+  }
 }
 </script>
 

@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "can-ndjson-stream": "^1.0.2",
     "core-js": "^3.6.5",
     "primeicons": "^4.1.0",
     "primevue": "^2.0.0",
