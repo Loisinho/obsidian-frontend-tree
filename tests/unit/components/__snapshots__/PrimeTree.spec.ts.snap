@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrimeTree.vue Snapshot 1`] = `
+<div id="primetree">
+  <h1>Obsidian Title</h1>
+  <p>
+    Vue 2 web project using TypeScript as main language,<br>
+    PrimeVue components to diplay de data collected with can-ndjson-stream<br>
+    and using Jest testing framework.<br> <a href="http://download.obsidiansoft.com/frontend.zip">Download this exercise</a>.
+  </p>
+  <div class="p-tree p-component">
+    <!---->
+    <!---->
+    <ul role="tree" class="p-tree-container">
+      <li class="p-treenode">
+        <div tabindex="0" role="treeitem" class="p-treenode-content"><button tabindex="-1" class="p-tree-toggler p-link"><span class="p-tree-toggler-icon pi pi-fw pi-chevron-right"></span></button>
+          <!----> <span class="p-treenode-icon"></span> <span class="p-treenode-label">
+      node_1
+    </span>
+        </div>
+        <!---->
+      </li>
+    </ul>
+  </div>
+</div>
+`;

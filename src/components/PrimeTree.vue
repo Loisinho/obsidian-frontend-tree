@@ -19,8 +19,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import ndjsonStream from 'can-ndjson-stream';
+import Tree from 'primevue/tree';
+import fetch from 'node-fetch';
 
-@Component
+@Component({
+  components: {
+    "Tree": Vue.extend(Tree)
+  }
+})
 export default class PrimeTree extends Vue {
   @Prop() private msg!: string;
 
