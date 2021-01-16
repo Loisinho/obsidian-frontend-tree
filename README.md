@@ -1,4 +1,6 @@
-# obsidian_frontend_tree
+# Obsidian Frontend Tree App
+
+Vue 2 web project using TypeScript as main language, PrimeVue components to diplay de data collected with can-ndjson-stream and using Jest testing framework.
 
 ## Project setup
 ```
@@ -15,9 +17,9 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
+### Tests
 ```
-npm run lint
+npm run test
 ```
 
 ### Customize configuration
